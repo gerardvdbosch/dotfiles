@@ -1,1 +1,3 @@
 # dotfiles
+
+zshconfig, vimrc & nvimrc
