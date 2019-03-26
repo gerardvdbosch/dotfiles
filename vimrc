@@ -1,40 +1,46 @@
 set ruler
-set cursorline
+set relativenumber
+set numberwidth=4
 set number
+set hidden
 syntax on
-
 filetype plugin indent on
+set cursorline
+hi cursorline cterm=none term=none
+highlight CursorLine ctermbg=237
+set colorcolumn=120
+highlight ColorColumn ctermbg=236
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+nnoremap <silent> <F9> :bn<CR>
+nnoremap <silent> <F7> :bp<CR>
 
-syntax enable
-nnoremap <Leader>w <C-w><C-w>
-nnoremap <leader>p oimport pdb; pdb.set_trace()<Esc>
-let g:CommandTAcceptSelectionTabMap = '<C-t>'
-" Solarized stuff
-let g:solarized_termtrans = 1
-set background=dark
-colorscheme solarized
-let g:python_highlight_all = 1
-set cul " highlight current line
-hi CursorLine term=none cterm=none ctermbg=0 " adjust color
+nnoremap <leader>p oimport ipdb; ipdb.set_trace()<Esc>
 " set the runtime path to include Vundle and initialize
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nmap <F6> :NERDTreeToggle<CR>
-" Temp fix for nerdtree
-let g:NERDTreeNodeDelimiter = "\u00a0"
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-python/python-syntax'
 Plugin 'tpope/vim-fugitive'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'davidhalter/jedi-vim'
-Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'davidhalter/jedi-vim'   
+Plugin 'vim-airline/vim-airline'  
+Plugin 'tpope/vim-commentary'  
+Plugin 'tpope/vim-surround'
 call vundle#end()            " required
 filetype plugin indent on    " required
+let g:airline#extensions#tabline#enabled = 1
+set completeopt=menuone,noselect,noinsert
+nnoremap [[ [m
+nnoremap ]] ]m
+
+nnoremap <silent><nowait> [ [[
+nnoremap <silent><nowait> ] ]]
+
+" path to your python
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/usr/bin/python2'
