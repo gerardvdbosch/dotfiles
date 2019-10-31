@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export TERM="xterm-256color"
 # Path to your oh-my-zsh installation.
+plugins=(virtualenv)
 export ZSH="/Users/gerard/.oh-my-zsh"
 stty -ixon -ixoff
 # Set name of the theme to load --- if set to "random", it will
@@ -97,19 +98,19 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vi ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # git aliases
-alias python="python3"
+# alias python="python3"
+alias pip="pip3"
 alias gitrm="git fetch upstream && git rebase upstream/master && git push"
 alias gitrd="git fetch upstream && git rebase upstream/develop && git push"
 alias pymm="python manage.py makemigrations && python manage.py migrate"
 alias pyss="python manage.py runserver 0.0.0.0:8000"
-alias vi="nvim"
-alias vim="nvim"
-alias vimrc="vi ~/.config/nvim/init.vim"
+alias vimrc="vi ~/.vimrc"
+alias tmuxconf="vim ~/.tmux.conf"
 PATH=$PATH:/usr/local/sbin
 
 #Powerlevel9k config
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv user dir vcs)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
 # Custom CD for venv
@@ -133,3 +134,5 @@ function cd() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$HOME/.pyenv:$PATH"
+eval "$(pyenv init -)"
