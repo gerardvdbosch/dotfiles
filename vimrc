@@ -7,15 +7,16 @@ syntax on
 filetype plugin indent on
 set cursorline
 hi cursorline cterm=none term=none
-highlight CursorLine ctermbg=237
-set colorcolumn=120
-highlight ColorColumn ctermbg=236
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight CursorLine ctermbg=239
+set colorcolumn=80
+highlight ColorColumn ctermbg=238
+highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight Visual cterm=bold ctermbg=Grey ctermfg=NONE
+highlight Pmenu cterm=bold ctermbg=DarkGrey ctermfg=NONE
 nnoremap <silent> <F9> :bn<CR>
 nnoremap <silent> <F7> :bp<CR>
 
 nnoremap <leader>p oimport pdb; pdb.set_trace()<Esc>
-" set the runtime path to include Vundle and initialize
 autocmd StdinReadPre * let s:std_in=1
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=/usr/local/opt/fzf
@@ -27,8 +28,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
 let g:airline#extensions#tabline#enabled = 1
 set completeopt=menuone,noselect,noinsert
 let g:ctrlp_custom_ignore = '\v\.(npy|jpg|pyc|so|dll)$'
